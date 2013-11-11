@@ -5,30 +5,30 @@ var emailRegex = /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF90
 function updateUserNav() {
     $(".navbar-user").detach();
 
-    function renderPullRight(id, text, onclick) {
-        $("#navbar-right").append(
-            '<ul class="nav navbar-nav pull-right navbar-user">\
-                 <li><a id="'+id+'" style="cursor:pointer">'+text+'</a></li>\
-             </ul>');
+    function renderPullRight(id, text, active, onclick) {
+        $("ul.nav.navbar-nav.navbar-right").append(
+            '<li class="navbar-user"><a id="'+id+'" style="cursor:pointer">'+text+'</a></li>'
+        );
+        if (active) $("a#" + id).parent().addClass("active");
         $("a#" + id).on('click', onclick);
     }
 
     if (user) {
-        renderPullRight("log-out", "Log Out", function() {
+        renderPullRight("log-out", "Log Out", false, function() {
             $.ajax({url: "/logout", type: "PUT"}).done(function() {console.log("Logged out");});
             window.user = null;
             updateUserNav();
         });
 
         var name = user.name ? user.name.nickname || user.name.first : "User";
-        renderPullRight("go-to-profile", name, function() {
+        renderPullRight("go-to-profile", name, false, function() {
             console.log("go to profile!");
         });
     } else {
-        renderPullRight("log-in", "Log In", function() {
+        renderPullRight("log-in", "Log In", false, function() {
             $("#log-in-window").dialog("open");
         });
-        renderPullRight("sign-up", "Sign Up", function() {
+        renderPullRight("sign-up", "Sign Up", true, function() {
             console.log("Sign up!");
         });
     }
@@ -84,7 +84,7 @@ function setupLogInWindow() {
 }
 
 $(function() {
-    console.log("Hello world!");
+    console.log("Hello World!");
     updateUserNav();
     setupLogInWindow();
 });

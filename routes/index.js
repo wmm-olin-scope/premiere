@@ -2,8 +2,7 @@
 var home, tweet, tweetStory, user, webcam, youtubeStory;
 
 var users = require('./users')
-  , tweetStories = require('./tweetStories')
-  , youtubeStories = require('./youtubeStories');
+  , premiere = require('./premiere');
 
 function home(req, res) {
     return res.render('index', {
@@ -21,9 +20,6 @@ function webcam(req, res) {
 
 exports.create = function(app) {
     app.get('/', home);
-    app.get('/tweet', tweet);
-    app.get('/webcam', webcam);
     users.create(app);
-    tweetStories.create(app);
-    youtubeStories.create(app);
+    premiere.create(app);
 };

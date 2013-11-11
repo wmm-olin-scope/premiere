@@ -1,0 +1,18 @@
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      h2.featurette-heading
+        | Ready?
+        span.text-muted  You can help.
+      p.lead
+        | If you want to help us change K-12 education, fill out this form and we'll get in touch—coffee's on us.
+  .row
+    .col-md-5.col-md-offset-2
+      form(role='form', method='post', action='emailsubmit.php')
+        .form-group
+          input#name.form-control(type='text', name='name', placeholder='Name')
+        .form-group
+          input#email.form-control(type='email', name='email', placeholder='Email address')
+        .form-group
+          textarea#message.form-control(rows='3', name='message', placeholder='Description of your idea')
+        button.btn.btn-default(type='submit') Submit

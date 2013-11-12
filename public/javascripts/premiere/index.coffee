@@ -26,7 +26,7 @@ setupCategory = () ->
         userCategory = category
         switchContent "/premiere/preshow/#{category}"
 
-    category = getCookie "userCategory"
+    category = null #getCookie "userCategory"
     if category isnt null
         onClickCategory category
     else
@@ -56,10 +56,7 @@ if Date.now() > movieDone
 else if Date.now() > movieStart
     startMovie()
 else if Date.now() > countdownStart
-    console.log "THe fuck!"
-    console.log countdownStart
-    console.log +Date.now()
     startCountdown()
 else
     setupCategory()
-    startCountdownCheck()
+    #startCountdownCheck()

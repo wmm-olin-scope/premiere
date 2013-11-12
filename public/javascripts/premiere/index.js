@@ -40,7 +40,7 @@ setupCategory = function() {
     userCategory = category;
     return switchContent("/premiere/preshow/" + category);
   };
-  category = getCookie("userCategory");
+  category = null;
   if (category !== null) {
     return onClickCategory(category);
   } else {
@@ -85,11 +85,7 @@ if (Date.now() > movieDone) {
 } else if (Date.now() > movieStart) {
   startMovie();
 } else if (Date.now() > countdownStart) {
-  console.log("THe fuck!");
-  console.log(countdownStart);
-  console.log(+Date.now());
   startCountdown();
 } else {
   setupCategory();
-  startCountdownCheck();
 }

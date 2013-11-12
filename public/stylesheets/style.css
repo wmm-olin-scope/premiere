@@ -82,7 +82,7 @@ p{
 .wf-active {
     visibility: visible;
 }
-#intro-video {
+#intro-bg {
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -91,8 +91,8 @@ p{
     width: auto;
     height: auto;
     overflow: hidden;
-    -webkit-filter: blur(6px);
-    filter: blur(6px);
+    /*-webkit-filter: blur(6px);*/
+    /*filter: blur(6px);*/
 }
 #header {
     overflow: hidden;

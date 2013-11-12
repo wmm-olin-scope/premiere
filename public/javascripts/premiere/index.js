@@ -88,4 +88,5 @@ if (Date.now() > movieDone) {
   startCountdown();
 } else {
   setupCategory();
+  startCountdownCheck();
 }

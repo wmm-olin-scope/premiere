@@ -59,4 +59,4 @@ else if Date.now() > countdownStart
     startCountdown()
 else
     setupCategory()
-    #startCountdownCheck()
+    startCountdownCheck()

@@ -13,14 +13,13 @@ body {
 
 .navbar-default{
   background-color: white;
+  font-family: 'Raleway', serif;
 }
 
-nav>li>a{
-  font-size:1.3em;
-  text-shadow:white 0px 1px 1px;
-  text-transform:uppercase;
-  font-family: 'Open Sans', sans-serif;
-  font-weight:800;
+/* SVG Logo */
+.navbar-brand object {
+  width: 20em;
+  margin-top: -0.5em;
 }
 
 .nav>li>a:hover,.nav>li>a:focus{

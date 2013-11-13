@@ -313,6 +313,11 @@ button.user-category {
   border-bottom: none;
   font-size: 38px;
   font-weight:bold;
+  vertical-align: top;
+}
+
+.modal-header>img{
+  vertical-align: top;
 }
 
 .modal-body{
@@ -389,12 +394,9 @@ input[type=checkbox] {
 }
 
 #modalbodytext>.form-control{
-  width: 40%;
-  height: 40px;
+  width: 30%;
+  height: 36px;
   margin-right: 10px;
   margin-left: 10px;
-  font-size: 16px;
+  font-size: 18px;
 }
-
-
-

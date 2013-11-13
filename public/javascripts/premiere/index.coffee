@@ -77,10 +77,12 @@ startPreshow = (category="General") ->
     req = switchContent "/premiere/preshow/#{category}", () ->
         console.log "Preshow loaded"
         startCountdownBar()
+        startMovieCheck()
     transition req
 
 setupCategory = () ->
     onClickCategory = (category) ->
+        category = "Student" # TODO: Quick fix
         movieStart = Date.now() + 1.5*60*1000
         userCategory = category
         startPartnerVideo category
@@ -146,4 +148,4 @@ $ () ->
         startMovie()
     else
         setupCategory()
-        startMovieCheck()
+        #startMovieCheck()

@@ -114,7 +114,8 @@ startPreshow = function(category) {
   console.log("Preshow starting");
   req = switchContent("/premiere/preshow/" + category, function() {
     console.log("Preshow loaded");
-    return startCountdownBar();
+    startCountdownBar();
+    return startMovieCheck();
   });
   return transition(req);
 };
@@ -122,6 +123,7 @@ startPreshow = function(category) {
 setupCategory = function() {
   var category, onClickCategory;
   onClickCategory = function(category) {
+    category = "Student";
     movieStart = Date.now() + 1.5 * 60 * 1000;
     userCategory = category;
     return startPartnerVideo(category);
@@ -213,7 +215,6 @@ $(function() {
   } else if (Date.now() > movieStart) {
     return startMovie();
   } else {
-    setupCategory();
-    return startMovieCheck();
+    return setupCategory();
   }
 });

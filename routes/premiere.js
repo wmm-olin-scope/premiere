@@ -41,9 +41,14 @@ function getPostshow(req, res) {
     res.render("premiere/postshow/" + category);
 }
 
+function getPartner(req, res) {
+    res.render("premiere/partner");
+}
+
 exports.create = function(app) {
     app.get('/premiere', getIndex);
     app.get('/premiere/category', getCategoryAsk);
+    app.get('/premiere/partner', getPartner)
     app.get('/premiere/preshow/:category', getPreshow);
     app.get('/premiere/countdown', getCountdown);
     app.get('/premiere/movie', getMovie);

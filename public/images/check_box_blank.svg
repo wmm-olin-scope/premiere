@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="22.25px" height="24.583px" viewBox="0 0 22.25 24.583" enable-background="new 0 0 22.25 24.583" xml:space="preserve">
+<g id="Check_Box" display="none">
+	<g display="inline">
+		<path fill="#808080" d="M14.531,0.885H1.401v22.741h13.13l6.565-11.371L14.531,0.885z"/>
+	</g>
+	<polyline display="inline" fill="none" stroke="#F6921E" stroke-width="3" stroke-miterlimit="10" points="3.271,12.474 
+		7.896,16.224 15.958,6.787 	"/>
+</g>
+<g id="Blank_Box">
+	<path fill="#F6921E" d="M14.531,0.708H1.401v22.74h13.13l6.565-11.37L14.531,0.708z"/>
+</g>
+</svg>

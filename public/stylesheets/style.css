@@ -206,7 +206,7 @@ button.user-category {
 
 
 #sidebar-left {
-    background: #383e4b;
+    background: #fff;
     padding: 10px;
 }
 
@@ -216,12 +216,12 @@ button.user-category {
     border-radius: 2px 0 0 2px;
     position: absolute;
     right: 0;
-    background: #f5f5f5;
-    color: #383e4b;
+    background: #fff;
+    color: #000;
 }
 
 #sidebar-left h1, h2, h3, h4, h5{
-  color: #fff;
+  color: #000;
 }
 
 .sidebar-nav{
@@ -242,7 +242,7 @@ button.user-category {
 }
 .nav-tabs.nav-stacked>li, .nav-tabs.nav-stacked>li>ul>li {
     padding: 10px 15px;
-    color: #fff;
+    color: #000;
     border: 0;
     background: transparent;
     -webkit-border-radius: 0;
@@ -300,8 +300,6 @@ button.user-category {
   margin-top: -15px;
 }
 
-input[type=checkbox] {width:20px; height:20px;}
-
 #progress-window>.ui-dialog-titlebar {
   display:none
 }
@@ -325,3 +323,9 @@ input[type=checkbox] {width:20px; height:20px;}
   background-color: #f89734;
   background-image: none;
 }
+
+input[type=checkbox] {
+  width:20px; 
+  height:20px;
+}
+

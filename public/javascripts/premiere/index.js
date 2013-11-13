@@ -124,6 +124,7 @@ startPostshow = function() {
   return transition(switchContent("/premiere/postshow/" + userCategory));
 };
 
+<<<<<<< HEAD
 $(function() {
   if (Date.now() > movieDone) {
     return startPostshow();
@@ -134,3 +135,15 @@ $(function() {
     return startMovieCheck();
   }
 });
+=======
+if (Date.now() > movieDone) {
+  startPostshow();
+} else if (Date.now() > movieStart) {
+  startMovie();
+} else if (Date.now() > countdownStart) {
+  startCountdown();
+} else {
+  setupCategory();
+  startCountdownCheck();
+}
+>>>>>>> fbeae4f3995de9467e66bae0a24e9c5eeb865444

@@ -9,7 +9,6 @@ h1,h2,h3,h4,h5{
 body {
   padding-top: 70px;
   font-family: 'Aleo', serif;
-  background-color: #444;
   font-family: 'Roboto Slab', serif;
 }
 
@@ -174,11 +173,12 @@ p{
 #premiere-video {
     width: 100%;
     text-align: center;
+    margin-top: 60px;
 }
 #preshow-video {
     width: 100%;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 button.user-category {

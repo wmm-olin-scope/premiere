@@ -323,7 +323,6 @@ button.user-category {
   background-image: none;
 }
 
-<<<<<<< HEAD
 #countdown {
   width: 100%;
   position: relative;
@@ -350,8 +349,8 @@ button.user-category {
 }
 
 #countdown-text {
-  margin: auto auto;
-  font-size: 3em;
+  margin: 0.5em auto;
+  font-size: 1.5em;
   top: 0.75em;
   left: 0;
   z-index: 2;
@@ -361,10 +360,9 @@ button.user-category {
   /*filter: DropShadow(Color=#000000, OffX=0, OffY=1);
   text-shadow: #505050 0px 1px 1px;*/
 }
-=======
+
 input[type=checkbox] {
   width:20px; 
   height:20px;
 }
 
->>>>>>> f4c6509a10112ef4dc2610980cb7bdf1fb3a6a28

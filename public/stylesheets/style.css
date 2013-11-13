@@ -205,7 +205,7 @@ button.user-category {
 
 
 #sidebar-left {
-    background: #383e4b;
+    background: #fff;
     padding: 10px;
 }
 
@@ -215,12 +215,12 @@ button.user-category {
     border-radius: 2px 0 0 2px;
     position: absolute;
     right: 0;
-    background: #f5f5f5;
-    color: #383e4b;
+    background: #fff;
+    color: #000;
 }
 
 #sidebar-left h1, h2, h3, h4, h5{
-  color: #fff;
+  color: #000;
 }
 
 .sidebar-nav{
@@ -241,7 +241,7 @@ button.user-category {
 }
 .nav-tabs.nav-stacked>li, .nav-tabs.nav-stacked>li>ul>li {
     padding: 10px 15px;
-    color: #fff;
+    color: #000;
     border: 0;
     background: transparent;
     -webkit-border-radius: 0;
@@ -299,8 +299,6 @@ button.user-category {
   margin-top: -15px;
 }
 
-input[type=checkbox] {width:20px; height:20px;}
-
 #progress-window>.ui-dialog-titlebar {
   display:none
 }
@@ -325,6 +323,7 @@ input[type=checkbox] {width:20px; height:20px;}
   background-image: none;
 }
 
+<<<<<<< HEAD
 #countdown {
   width: 100%;
   position: relative;
@@ -362,3 +361,10 @@ input[type=checkbox] {width:20px; height:20px;}
   /*filter: DropShadow(Color=#000000, OffX=0, OffY=1);
   text-shadow: #505050 0px 1px 1px;*/
 }
+=======
+input[type=checkbox] {
+  width:20px; 
+  height:20px;
+}
+
+>>>>>>> f4c6509a10112ef4dc2610980cb7bdf1fb3a6a28

@@ -1,11 +1,8 @@
 .container
   .row
     .col-md-9
-      h2.featurette-heading
-        | Ready?
-        span.text-muted  You can help.
-      p.lead
-        | If you want to help us change K-12 education, fill out this form and we'll get in touch—coffee's on us.
+      #preshow-video.container(style="width=100%")
+        iframe.video-player(src="//www.ustream.tv/embed/16350074?wmode=direct&autoplay=true", frameborder="no", width="960", height="550")
     #sidebar-left.col-md-3
       .nav-collapse.sidebar-nav
         center
@@ -14,17 +11,19 @@
         ul.nav.nav-tabs.nav-stacked.main-menu
           li
             span.hidden-tablet  
-              input(type='checkbox' checked) 
+              img(src="../images/check_box_done.svg")
               | &nbsp;&nbsp;Watch the movie
           li
             span.hidden-tablet  
-              input(type='checkbox') 
+              img(src="../images/check_box_blank.svg")
               | &nbsp;&nbsp;Join the conversation
           li
             span.hidden-tablet  
-              input(type='checkbox') 
+              img(src="../images/check_box_blank.svg")
               | &nbsp;&nbsp;Reimagine the future
           li
             span.hidden-tablet
               center
                 button#Start.btn.btn-info.btn-lg.user-category(type='button') Get Started
+  style(type='text/css').
+    body {background-color: #444;}

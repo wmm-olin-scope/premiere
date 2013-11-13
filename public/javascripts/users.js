@@ -28,7 +28,7 @@ function updateUserNav() {
         renderPullRight("log-in", "Log In", false, function() {
             $("#log-in-window").dialog("open");
         });
-        renderPullRight("sign-up", "Sign Up", true, function() {
+        renderPullRight("sign-up", "Sign Up", false, function() {
             console.log("Sign up!");
         });
     }

@@ -195,3 +195,13 @@ button.user-category {
   background-color: #f7810a;
   border-color: #f7810a;
 }
+
+#progress-window>.ui-dialog-titlebar {
+  display:none
+}
+
+.ui-widget-overlay {
+  background: #000;
+  opacity: .80;
+  filter: Alpha(Opacity=80); 
+}

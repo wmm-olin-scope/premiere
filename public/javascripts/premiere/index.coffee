@@ -1,20 +1,54 @@
 
 contentDiv = $ "#content"
 
-movieStart = Date.now() + 25*1000
-countdownStart = movieStart - 10*1000
+movieStart = Date.now() + 10*1000
 movieDone = movieStart + 10*1000
 
 userCategory = "General"
 
-switchContent = (contentUrl, done) ->
-    contentDiv.html "" # loading or something?
-
+switchContent = (contentUrl, done=null) ->
     $.ajax(contentUrl)
         .fail((err) -> console.log err)
         .done (content) -> 
             contentDiv.html content
             done() if done
+
+
+transition = (request, title=null, duration=750) ->
+    $("body").append """
+        <div id="progress-window">
+            <div id="progress-bar"></div>
+        </div>
+    """
+    progressWindow = $ "#progress-window"
+    progressBar = $ "#progress-bar", progressWindow
+
+    progressWindow.dialog
+        dialogClass: "dialog-no-close"
+        width: 600
+        height: 102
+        modal: true
+        resizable: false
+        draggable: false
+        closeOnEscape: false
+
+    if title
+        progressWindow.dialog "option", "title", title
+    else
+        $(".ui-dialog-titlebar", progressWindow.parent()).css "display", "none"
+
+    progressWindow.dialog "open"
+
+    progressBar.progressbar
+        value: false
+
+    request.always () ->
+        progressBar.progressbar {value: 1}
+        $(".ui-progressbar-value", progressBar).animate {width: "100%"},
+            duration: duration 
+            complete: () -> 
+                progressWindow.dialog "close"
+                progressWindow.parent().remove()
 
 getCookie = (name) ->
     re = new RegExp "(?:^#{name}|;\s*#{name})=(.*?)(?:;|$)", "g"
@@ -24,7 +58,8 @@ getCookie = (name) ->
 setupCategory = () ->
     onClickCategory = (category) ->
         userCategory = category
-        switchContent "/premiere/preshow/#{category}"
+        console.log "Starting preshow"
+        transition switchContent "/premiere/preshow/#{category}"
 
     category = null #getCookie "userCategory"
     if category isnt null
@@ -37,26 +72,24 @@ setupCategory = () ->
                         onClickCategory category
 
 startCountdown = () ->
-    switchContent "/premiere/countdown"
+    transition switchContent "/premiere/countdown"
     setTimeout startMovie, movieStart - Date.now()
 
-startCountdownCheck = () ->
-    console.log countdownStart - Date.now()
-    setTimeout startCountdown, countdownStart - Date.now()
+startMovieCheck = () ->
+    setTimeout startMovie, movieStart - Date.now()
 
 startMovie = () ->
-    switchContent "/premiere/movie"
+    transition switchContent("/premiere/movie"), "Starting Movie", 3000
     setTimeout startPostshow, movieDone - Date.now()
 
 startPostshow = () ->
-    switchContent "/premiere/postshow/#{userCategory}"
+    transition switchContent "/premiere/postshow/#{userCategory}"
 
-if Date.now() > movieDone
-    startPostshow()
-else if Date.now() > movieStart
-    startMovie()
-else if Date.now() > countdownStart
-    startCountdown()
-else
-    setupCategory()
-    startCountdownCheck()
+$ () ->
+    if Date.now() > movieDone
+        startPostshow()
+    else if Date.now() > movieStart
+        startMovie()
+    else
+        setupCategory()
+        startMovieCheck()

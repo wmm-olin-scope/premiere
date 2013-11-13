@@ -181,6 +181,13 @@ p{
     text-align: center;
     margin-top: 60px;
 }
+iframe.video-player {
+  margin: 0 auto; 
+  border: 0 none transparent; 
+  box-shadow: 0 0 32px 8px rgba(26, 26, 26, 0.75); 
+  -moz-box-shadow: 0 0 32px 8px rgba(26, 26, 26, 0.75); 
+  -webkit-box-shadow: 0 0 32px 8px rgba(26, 26, 26, 0.75);"
+}
 
 button.user-category {
   margin: 0 0.5em 0 0.5em;
@@ -197,6 +204,7 @@ button.user-category {
   border-color: #f7810a;
 }
 
+<<<<<<< HEAD
 
 #sidebar-left {
     background: #383e4b;
@@ -302,3 +310,27 @@ button.user-category {
 }
 
 input[type=checkbox] {width:20px; height:20px;}
+
+#progress-window>.ui-dialog-titlebar {
+  display:none
+}
+
+.ui-widget-overlay {
+  background: #000;
+  opacity: .90;
+  filter: Alpha(Opacity=90); 
+}
+
+.dialog-no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.ui-progressbar {
+  border: none;
+  border-color: none;
+}
+
+.ui-progressbar .ui-progressbar-value {
+  background-color: #f89734;
+  background-image: none;
+}

@@ -3,7 +3,7 @@ var contentDiv, getCookie, movieDone, movieStart, setupCategory, startCountdown,
 
 contentDiv = $("#content");
 
-movieStart = Date.now() + 25 * 1000;
+movieStart = Date.now() + 10 * 1000;
 
 movieDone = movieStart + 10 * 1000;
 
@@ -31,16 +31,17 @@ transition = function(request, title, duration) {
   if (duration == null) {
     duration = 750;
   }
-  progressWindow = $("#progress-window");
   $("body").append("<div id=\"progress-window\">\n    <div id=\"progress-bar\"></div>\n</div>");
+  progressWindow = $("#progress-window");
   progressBar = $("#progress-bar", progressWindow);
   progressWindow.dialog({
-    dialogClass: "no-close",
+    dialogClass: "dialog-no-close",
     width: 600,
-    height: 105,
+    height: 102,
     modal: true,
     resizable: false,
-    draggable: false
+    draggable: false,
+    closeOnEscape: false
   });
   if (title) {
     progressWindow.dialog("option", "title", title);
@@ -79,16 +80,17 @@ getCookie = function(name) {
 };
 
 setupCategory = function() {
-  var category, onClickCategory, req;
+  var category, onClickCategory;
   onClickCategory = function(category) {
     userCategory = category;
+    console.log("Starting preshow");
     return transition(switchContent("/premiere/preshow/" + category));
   };
   category = null;
   if (category !== null) {
     return onClickCategory(category);
   } else {
-    req = switchContent("/premiere/category", function() {
+    return switchContent("/premiere/category", function() {
       var _i, _len, _ref, _results;
       _ref = ["General", "Student", "Parent", "Educator"];
       _results = [];
@@ -102,7 +104,6 @@ setupCategory = function() {
       }
       return _results;
     });
-    return transition(req);
   }
 };
 
@@ -124,7 +125,6 @@ startPostshow = function() {
   return transition(switchContent("/premiere/postshow/" + userCategory));
 };
 
-<<<<<<< HEAD
 $(function() {
   if (Date.now() > movieDone) {
     return startPostshow();
@@ -135,15 +135,3 @@ $(function() {
     return startMovieCheck();
   }
 });
-=======
-if (Date.now() > movieDone) {
-  startPostshow();
-} else if (Date.now() > movieStart) {
-  startMovie();
-} else if (Date.now() > countdownStart) {
-  startCountdown();
-} else {
-  setupCategory();
-  startCountdownCheck();
-}
->>>>>>> fbeae4f3995de9467e66bae0a24e9c5eeb865444

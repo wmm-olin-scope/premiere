@@ -1,7 +1,7 @@
 
 contentDiv = $ "#content"
 
-movieStart = Date.now() + 25*1000
+movieStart = Date.now() + 10*1000
 movieDone = movieStart + 10*1000
 
 userCategory = "General"
@@ -15,22 +15,22 @@ switchContent = (contentUrl, done=null) ->
 
 
 transition = (request, title=null, duration=750) ->
-    progressWindow = $ "#progress-window"
     $("body").append """
         <div id="progress-window">
             <div id="progress-bar"></div>
         </div>
     """
-    
+    progressWindow = $ "#progress-window"
     progressBar = $ "#progress-bar", progressWindow
 
     progressWindow.dialog
-        dialogClass: "no-close"
+        dialogClass: "dialog-no-close"
         width: 600
-        height: 105
+        height: 102
         modal: true
         resizable: false
         draggable: false
+        closeOnEscape: false
 
     if title
         progressWindow.dialog "option", "title", title
@@ -58,18 +58,18 @@ getCookie = (name) ->
 setupCategory = () ->
     onClickCategory = (category) ->
         userCategory = category
+        console.log "Starting preshow"
         transition switchContent "/premiere/preshow/#{category}"
 
     category = null #getCookie "userCategory"
     if category isnt null
         onClickCategory category
     else
-        req = switchContent "/premiere/category", () ->
+        switchContent "/premiere/category", () ->
             for category in ["General", "Student", "Parent", "Educator"]
                 do (category) ->
                     $("button##{category}").on "click", () ->
                         onClickCategory category
-        transition req
 
 startCountdown = () ->
     transition switchContent "/premiere/countdown"
@@ -83,7 +83,6 @@ startMovie = () ->
     setTimeout startPostshow, movieDone - Date.now()
 
 startPostshow = () ->
-<<<<<<< HEAD
     transition switchContent "/premiere/postshow/#{userCategory}"
 
 $ () ->
@@ -94,16 +93,3 @@ $ () ->
     else
         setupCategory()
         startMovieCheck()
-=======
-    switchContent "/premiere/postshow/#{userCategory}"
-
-if Date.now() > movieDone
-    startPostshow()
-else if Date.now() > movieStart
-    startMovie()
-else if Date.now() > countdownStart
-    startCountdown()
-else
-    setupCategory()
-    startCountdownCheck()
->>>>>>> fbeae4f3995de9467e66bae0a24e9c5eeb865444

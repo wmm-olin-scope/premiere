@@ -1,9 +1,9 @@
 
 contentDiv = $ "#content"
 
-movieStart = Date.now() + 14*1000
-movieDone = movieStart + 10*1000
-countdownLength = 15*60*1000
+movieStart = Date.now() + 2*60*1000
+movieDone = movieStart + 30*1000
+countdownLength = 2*60*1000
 
 userCategory = "General"
 
@@ -56,15 +56,34 @@ getCookie = (name) ->
     result = re.exec document.cookie
     if result then result[1] else null
 
+startPartnerVideo = (category) ->
+    req = switchContent "/premiere/partner", () ->
+        new YT.Player 'partner-video-iframe',
+            height: '550'
+            width: '960'
+            videoId: 'kaoGnuhz4Kg'
+            allowfullscreen: true
+            frameborder: "no"
+            autoplay: true
+            events:
+                onReady: (event) ->
+                    event.target.playVideo()
+                onStateChange: (event) ->
+                    startPreshow category if event.data is YT.PlayerState.ENDED
+    transition req, "Loading a message from Randi"
+                    
 startPreshow = (category="General") ->
+    console.log "Preshow starting"
     req = switchContent "/premiere/preshow/#{category}", () ->
+        console.log "Preshow loaded"
         startCountdownBar()
     transition req
 
 setupCategory = () ->
     onClickCategory = (category) ->
+        movieStart = Date.now() + 1.5*60*1000
         userCategory = category
-        startPreshow category
+        startPartnerVideo category
 
     category = null #getCookie "userCategory"
     if category isnt null
@@ -79,12 +98,9 @@ setupCategory = () ->
 startCountdownBar = () ->
     bar = $ "#countdown-bar"
     delta = movieStart - Date.now()
-
-    console.log delta, bar
+    countdownLength = delta + 1000
 
     if delta > countdownLength
-        console.log "SHIT!"
-
         div = $ "countdown"
         div.hide()
         setTimeout((() -> 
@@ -99,6 +115,19 @@ startCountdownBar = () ->
     bar.animate {width: "100%"},
         duration: delta
         easing: "linear"
+
+    id = setInterval((() ->
+        delta = movieStart - Date.now()
+        if delta <= 0
+            clearInterval id
+        else
+            console.log delta
+            min = Math.floor delta/(60*1000)
+            console.log min
+            sec = Math.floor (delta - min*60*1000)/1000
+            pad = (x) -> if x >= 10 then "#{x}" else "0#{x}"
+            $("#countdown-text").text "#{pad min}:#{pad sec} to Premiere"
+    ), 500)
 
 startMovieCheck = () ->
     setTimeout startMovie, movieStart - Date.now()

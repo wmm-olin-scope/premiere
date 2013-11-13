@@ -204,21 +204,12 @@ button.user-category {
   border-color: #f7810a;
 }
 
-<<<<<<< HEAD
 
 #sidebar-left {
     background: #383e4b;
     padding: 10px;
 }
 
-#sidebar-left .actions .search {
-    background: #2d323d;
-    color: #fff;
-    border: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-}
 #sidebar-left .label {
     -webkit-border-radius: 2px 0 0 2px;
     -moz-border-radius: 2px 0 0 2px;

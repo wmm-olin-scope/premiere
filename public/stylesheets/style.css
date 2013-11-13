@@ -310,6 +310,21 @@ button.user-category {
   filter: Alpha(Opacity=90); 
 }
 
+.modal-header{
+  border-bottom: none;
+  font-size: 38px;
+  font-weight:bold;
+}
+
+.modal-body{
+  font-size: 24px;
+}
+
+.modal-footer{
+  border-top: none;
+  margin-top: -20px;
+}
+
 .dialog-no-close .ui-dialog-titlebar-close {
   display: none;
 }
@@ -328,4 +343,21 @@ input[type=checkbox] {
   width:20px; 
   height:20px;
 }
+
+.form-control{
+  width: 83%;
+  margin-right: 15px;
+  height: 44px;
+  font-size: 16px;
+}
+
+#modalbodytext>.form-control{
+  width: 40%;
+  height: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+
 

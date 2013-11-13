@@ -24,6 +24,26 @@
           li
             span.hidden-tablet
               center
-                button#Start.btn.btn-info.btn-lg.user-category(type='button') Get Started
+                button#Start.btn.btn-info.btn-lg.user-category(type='button' data-toggle="modal" data-target="#giveModal") Get Started
+  #giveModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          img(src="../images/arrow.png")
+          | &nbsp;Join The Movement.
+        .modal-body
+          form.form-inline(role='form' id="modalbodytext")
+            | I am 
+            input#email.form-control(type='text', placeholder='Enter first name, last initial')
+            | and I think that the future of K-12 education needs to look different. 
+            br
+            br
+            strong
+              | I want to be part of the future.
+        .modal-footer
+          form.form-inline(role='form')
+            input#email.form-control(type='email', placeholder='Enter email')
+            button#Start.btn.btn-info.btn-lg() Join.
   style(type='text/css').
     body {background-color: #444;}

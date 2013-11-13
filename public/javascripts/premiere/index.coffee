@@ -1,8 +1,9 @@
 
 contentDiv = $ "#content"
 
-movieStart = Date.now() + 10*1000
+movieStart = Date.now() + 14*1000
 movieDone = movieStart + 10*1000
+countdownLength = 15*60*1000
 
 userCategory = "General"
 
@@ -55,11 +56,15 @@ getCookie = (name) ->
     result = re.exec document.cookie
     if result then result[1] else null
 
+startPreshow = (category="General") ->
+    req = switchContent "/premiere/preshow/#{category}", () ->
+        startCountdownBar()
+    transition req
+
 setupCategory = () ->
     onClickCategory = (category) ->
         userCategory = category
-        console.log "Starting preshow"
-        transition switchContent "/premiere/preshow/#{category}"
+        startPreshow category
 
     category = null #getCookie "userCategory"
     if category isnt null
@@ -71,9 +76,29 @@ setupCategory = () ->
                     $("button##{category}").on "click", () ->
                         onClickCategory category
 
-startCountdown = () ->
-    transition switchContent "/premiere/countdown"
-    setTimeout startMovie, movieStart - Date.now()
+startCountdownBar = () ->
+    bar = $ "#countdown-bar"
+    delta = movieStart - Date.now()
+
+    console.log delta, bar
+
+    if delta > countdownLength
+        console.log "SHIT!"
+
+        div = $ "countdown"
+        div.hide()
+        setTimeout((() -> 
+            div.show()
+            startCountdownBar()
+        ), delta - countdownLength)
+        return
+
+    width = 100*Math.max(0.01, 1 - delta/countdownLength)
+    console.log width
+    bar.css {width: "#{width}%"}
+    bar.animate {width: "100%"},
+        duration: delta
+        easing: "linear"
 
 startMovieCheck = () ->
     setTimeout startMovie, movieStart - Date.now()
